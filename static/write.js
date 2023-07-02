@@ -5,6 +5,7 @@ let data = '';
 form.addEventListener('submit', async function (e){
   e.preventDefault();
   data = form.children[0].value 
+  console.log(data)
   if (!data) {
     isError();
   }
@@ -55,6 +56,7 @@ downloadButton.addEventListener('click', async function () {
           download(blob)
           rep.innerText = 'Downloading is finished!!!'
           close.style.display = 'block';
+          form.children[0].value = '';
         }
         }).catch(err => {
           rep.innerText = 'Interrupt Occurred!!!';
@@ -62,4 +64,6 @@ downloadButton.addEventListener('click', async function () {
           form.children[0].value = '';
         });
   downloadButton.style.display = 'none'; 
+  close.style.display = 'none';
+  rep.innerText = 'Downloading is in progress, Wait for few seconds!!!'
 })
